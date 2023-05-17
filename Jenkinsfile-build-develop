@@ -21,7 +21,7 @@ pipeline {
             }
         }
 
-/*         stage('Build and Verify') {
+        stage('Build and Verify') {
             steps {
                 sh 'echo Build and Verify Success'
             }
@@ -72,7 +72,7 @@ pipeline {
                  sh 'git commit -m "Updated Patch/Incremental Version"'
                  sh "git push origin"
             }
-        } */
+        }
 
     }
 

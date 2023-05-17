@@ -20,6 +20,7 @@ pipeline {
                 echo "POM_MAJOR_VERSION: ${env.POM_MAJOR_VERSION}"
                 echo "POM_MINOR_VERSION: ${env.POM_MINOR_VERSION}"
                 echo "POM_PATCH_VERSION: ${env.POM_PATCH_VERSION}"
+                echo "POM_MAVEN_QUALIFIER: ${env.POM_MAVEN_QUALIFIER}"
             }
         }
 
