@@ -24,7 +24,7 @@ echo "------------------------------------------------------------"
 git checkout release/$MAJOR_VERSION.$MINOR_VERSION;
 git add pom.xml;
 git commit -m "Prepare release RC-0";
-git push origin;
+git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION; 
 
 echo "============================================================"
 
