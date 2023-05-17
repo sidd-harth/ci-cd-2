@@ -6,9 +6,13 @@ echo "--------------------------------------------------"
 POM_SNAPSHOT_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout);
 echo "DEBUG - Artifact version: $POM_SNAPSHOT_VERSION"
 
-echo POM_MAJOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f1 ); >> build-${BUILD_NUMBER}-pom-version.properties
-echo POM_MINOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f2 ); >> build-${BUILD_NUMBER}-pom-version.properties
-echo POM_PATCH_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f3 | cut -d- -f1 ); >> build-${BUILD_NUMBER}-pom-version.properties
+POM_MAJOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f1 );
+POM_MINOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f2 );
+POM_PATCH_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f3 | cut -d- -f1 ); 
+
+echo $POM_MAJOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
+echo $POM_MINOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
+echo $POM_PATCH_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
 
 if [[ $POM_SNAPSHOT_VERSION == *"-SNAPSHOT"* ]];
 then
