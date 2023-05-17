@@ -24,7 +24,7 @@ echo "------------------------------------------------------------"
 git checkout develop;
 git add pom.xml;
 git commit -m "Prepare release RC-0";
-git push origin"
+git push origin;
 
 echo "============================================================"
 
