@@ -17,7 +17,7 @@ echo "DEBUG - MINOR_VERSION: $MINOR_VERSION"
 echo "DEBUG - PATCH_VERSION: $PATCH_VERSION"
 echo "DEBUG - MAVEN_QUALIFIER: $MAVEN_QUALIFIER"
 
-echo "============================================================"
+echo "------------------------------------------------------------"
 echo "DEBUG - Commit to Release Branch"
 echo "------------------------------------------------------------"
 
