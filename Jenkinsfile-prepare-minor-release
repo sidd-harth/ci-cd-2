@@ -49,7 +49,7 @@ pipeline {
 
         stage('Update Maven Qualifier to RC') {
             steps {
-                sh 'mvn build-helper:parse-version versions:set -DnewVersion=\\${parsedVersion.majorVersion}.\\${parsedVersion.minorVersion}.\\${parsedVersion.IncrementalVersion}-RC-0 versions:commit'
+                sh 'mvn build-helper:parse-version versions:set -DnewVersion=\\${parsedVersion.majorVersion}.\\${parsedVersion.minorVersion}.\\${parsedVersion.incrementalVersion}-RC-0 versions:commit'
             }
         }
 
