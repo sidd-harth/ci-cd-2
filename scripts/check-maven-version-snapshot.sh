@@ -9,6 +9,7 @@ echo "DEBUG - Pom version: $POM_SNAPSHOT_VERSION"
 echo "DEBUG - Major version: ${POM_MAJOR_VERSION}"
 echo "DEBUG - Minor version: ${POM_MINOR_VERSION}"
 echo "DEBUG - Patch version: ${POM_PATCH_VERSION}"
+echo "DEBUG - Maven Qualifier: ${POM_MAVEN_QUALIFIER}"
 
 # POM_MAJOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f1 );
 # POM_MINOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f2 );
