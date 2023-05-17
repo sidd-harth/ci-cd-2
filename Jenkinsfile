@@ -51,7 +51,7 @@ pipeline {
 
         stage('Update Incremental/Patch Version') {
             steps {
-                 sh 'mvn build-helper:parse-version versions:set -DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}-${parsedVersion.qualifier} versions:commit'
+                 sh "mvn build-helper:parse-version versions:set -DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion}-${parsedVersion.qualifier} versions:commit"
             }
         }
 
