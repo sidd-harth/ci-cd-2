@@ -27,7 +27,7 @@ pipeline {
         stage('Update Minor Version') {
             steps {
                  sh "git checkout develop"
-                 sh 'git pull'
+              //   sh 'git pull'
                  sh 'mvn build-helper:parse-version versions:set -DnewVersion=\\${parsedVersion.majorVersion}.\\${parsedVersion.nextMinorVersion}.0-\\${parsedVersion.qualifier} versions:commit'
             }
         }
