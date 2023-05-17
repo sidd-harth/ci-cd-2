@@ -9,7 +9,7 @@ pipeline {
 
         stage('Check Maven Version') {
             steps {
-                sh 'bash scripts/check-maven-version-snapshot.sh'
+                sh 'bash check-maven-version-snapshot.sh'
             }
         }
 
