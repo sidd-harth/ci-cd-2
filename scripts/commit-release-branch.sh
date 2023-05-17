@@ -18,11 +18,13 @@ echo "DEBUG - PATCH_VERSION: $PATCH_VERSION"
 echo "DEBUG - MAVEN_QUALIFIER: $MAVEN_QUALIFIER"
 
 echo "============================================================"
-echo "DEBUG - Create Release Branch"
+echo "DEBUG - Commit to Release Branch"
 echo "------------------------------------------------------------"
 
-sh "git checkout develop" 
-sh "git checkout -b release/$MAJOR_VERSION.$MINOR_VERSION develop"
+git checkout develop;
+git add pom.xml;
+git commit -m "Prepare release RC-0";
+git push origin"
 
 echo "============================================================"
 
