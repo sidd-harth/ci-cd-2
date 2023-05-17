@@ -10,9 +10,9 @@ POM_MAJOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceS
 POM_MINOR_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f2 );
 POM_PATCH_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f3 | cut -d- -f1 ); 
 
-echo $POM_MAJOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
-echo $POM_MINOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
-echo $POM_PATCH_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
+echo MAJOR_VERSION=$POM_MAJOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
+echo MINOR_VERSION$POM_MINOR_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
+echo PATCH_VERSION$POM_PATCH_VERSION >> build-${BUILD_NUMBER}-pom-version.properties
 
 if [[ $POM_SNAPSHOT_VERSION == *"-SNAPSHOT"* ]];
 then
