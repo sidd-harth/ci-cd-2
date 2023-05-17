@@ -5,6 +5,13 @@ pipeline {
         maven 'M386'
     }
 
+    environment {
+        POM_VERSION       = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout", returnStdout: true).trim()
+        POM_MAJOR_VERSION = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f1", returnStdout: true).trim()
+        POM_MINOR_VERSION = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f2", returnStdout: true).trim()
+        POM_PATCH_VERSION = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout |  cut -d. -f3 | cut -d- -f1", returnStdout: true).trim()
+    }
+       
     stages {
 
         stage('Check Maven Version') {
@@ -13,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Build and Verify') {
+/*         stage('Build and Verify') {
             steps {
                 sh 'echo Build and Verify Success'
             }
@@ -64,7 +71,7 @@ pipeline {
                  sh 'git commit -m "Updated Patch/Incremental Version"'
                  sh "git push origin"
             }
-        }
+        } */
 
     }
 
