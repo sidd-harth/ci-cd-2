@@ -11,4 +11,5 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<http:listener doc:name="Listener" doc:id="a3272538-909d-4202-b7c1-5956d1d95cb0" config-ref="HTTP_Listener_config" path="/hello"/>
 		<set-payload value="hello-world-feature-123" doc:name="Set Payload" doc:id="3d1e1da0-86b5-49fd-b644-b969fa226190" />
 	</flow>
+	<!-- bugfix/1.1 -->
 </mule>

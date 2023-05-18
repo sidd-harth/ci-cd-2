@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "============================================================"
-echo "DEBUG - Fetching Major Minor Version for Release Branch Name"
+echo "DEBUG - Fetching Major.Minor.Patch-Qualifier-Build Details"
 echo "------------------------------------------------------------"
 
 POM_VERSION=$(mvn help:evaluate -Dexpression='project.version' -q -DforceStdout);
@@ -22,21 +22,17 @@ echo "VERSION_WITHOUT_BUILD_NUMBER: ${env.VERSION_WITHOUT_BUILD_NUMBER}"
 echo "VERSION_BUILD_NUMBER: ${env.VERSION_BUILD_NUMBER}"
 
 echo "------------------------------------------------------------"
-echo "DEBUG - Commit to Release Branch"
+echo "DEBUG - Incrementing Build Number"
 echo "------------------------------------------------------------"
 
-if [ ${JOB_NAME} -eq 'bugfix-release' ]
-then
-    git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};
-    git add pom.xml;
-    git commit -m "Bugfix release RC-${env.VERSION_BUILD_NUMBER}";
-    git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};  
-else
-    git checkout release/$MAJOR_VERSION.$MINOR_VERSION;
-    git add pom.xml;
-    git commit -m "Prepare release RC-0";
-    git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION; 
-fi
+UPDATED_BUILD_NUMBER=$(expr $VERSION_BUILD_NUMBER + "1")
+echo "Updated Build Number: $UPDATED_BUILD_NUMBER"
+
+echo "------------------------------------------------------------"
+echo "DEBUG - Setting New Maven Version"
+echo "------------------------------------------------------------"
+
+mvn build-helper:parse-version versions:set -DnewVersion=$UPDATED_BUILD_NUMBER versions:commit
 
 echo "============================================================"
 
