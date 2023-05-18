@@ -25,7 +25,7 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Create Release Branch"
 echo "------------------------------------------------------------"
 
-if [ $JOB_NAME -eq 'bugfix-release' ]
+if [[ $JOB_NAME -eq 'bugfix-release' ]]
 then
     git add pom.xml   
     git commit -m "Updated Build Number"
