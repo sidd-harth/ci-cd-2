@@ -25,8 +25,10 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Create Release Branch"
 echo "------------------------------------------------------------"
 
-if [ ${JOB_NAME} -eq 'bugfix-release' ]
+if [ $JOB_NAME -eq 'bugfix-release' ]
 then
+    git add pom.xml   
+    git commit -m "Updated Build Number"
     git checkout -b release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER} release/$MAJOR_VERSION.$MINOR_VERSION;
 else
     git checkout develop;
