@@ -11,8 +11,8 @@ MAJOR_VERSION=$(echo $POM_VERSION | cut -d. -f1)
 MINOR_VERSION=$(echo $POM_VERSION | cut -d. -f2)
 PATCH_VERSION=$(echo $POM_VERSION | cut -d. -f3 | cut -d- -f1)
 MAVEN_QUALIFIER=$(echo $POM_VERSION | cut -d- -f2)
-VERSION_WITHOUT_BUILD_NUMBER=$(echo $POM_VERSION | sed 's/^\(.*-\)\([0-9]*\)$/\1/')
-VERSION_BUILD_NUMBER=$(echo $POM_VERSION | sed 's/^\(.*-\)\([0-9]*\)$/\2/')
+VERSION_WITHOUT_BUILD_NUMBER=$(echo $MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION-$MAVEN_QUALIFIER-)
+VERSION_BUILD_NUMBER=$(echo $POM_VERSION | cut -d- -f3)
 
 echo "DEBUG - MAJOR_VERSION: $MAJOR_VERSION"
 echo "DEBUG - MINOR_VERSION: $MINOR_VERSION"
@@ -32,7 +32,7 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Setting New Maven Version"
 echo "------------------------------------------------------------"
 
-mvn build-helper:parse-version versions:set -DnewVersion=$UPDATED_BUILD_NUMBER versions:commit
+mvn build-helper:parse-version versions:set -DnewVersion=$VERSION_WITHOUT_BUILD_NUMBER$UPDATED_BUILD_NUMBER versions:commit
 
 echo "============================================================"
 
