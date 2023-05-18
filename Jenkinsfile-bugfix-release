@@ -41,7 +41,7 @@ pipeline {
 
         stage('Update Build Number & Set Maven Version') {
             steps {
-                 sh '''sh bugfix-update-build-number-and-set-maven-version.sh'''
+                 sh '''sh scripts/bugfix-update-build-number-and-set-maven-version.sh'''
             }
         }
 
