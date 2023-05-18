@@ -44,6 +44,41 @@ pipeline {
             }
         }
 
+        stage('Promote API - UAT') {
+            steps {
+                sh 'echo Promote API - UAT Success'
+            }
+        }
+
+        stage('Deploy to CH2 - UAT') {
+            steps {
+                sh 'echo Deploy to CH2 UAT Success'
+            }
+        }
+
+        stage('Integration Testing') {
+            steps {
+                sh 'echo Integration Testing Success'
+            }
+        }
+
+        stage('Regression Testing') {
+            steps {
+                sh 'echo Regression Testing Success'
+            }
+        }
+
+        stage('Feature Testing') {
+            steps {
+                sh 'echo Feature Testing Success'
+            }
+        }                        
+
+        stage('Smoke Testing') {
+            steps {
+                sh 'echo Smoke Testing Success'
+            }
+        } 
 /*         stage('Check Maven Version') {
             steps {
                 sh "sh scripts/check-maven-version-snapshot.sh"
