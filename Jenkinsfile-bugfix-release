@@ -27,7 +27,7 @@ pipeline {
 
         stage('Echo Version') {
             when {
-                expression { params.RELEASE_VERSION ==~ 'release' }
+                expression { params.RELEASE_VERSION.contains("release") }
             }
             steps {
                 echo "POM_MAJOR_VERSION: ${env.POM_MAJOR_VERSION}"
