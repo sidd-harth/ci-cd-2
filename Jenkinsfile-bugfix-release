@@ -41,19 +41,19 @@ pipeline {
 
         stage('Update Build Number & Set Maven Version') {
             steps {
-                 sh "sh bugfix-update-build-number-and-set-maven-version.sh"
+                 sh """sh bugfix-update-build-number-and-set-maven-version.sh"""
             }
         }
 
         stage('Create Release Branch') {
             steps {
-                sh "sh scripts/create-release-branch.sh"
+                sh """sh scripts/create-release-branch.sh"""
             }
         }
 
         stage('Commit to Release Branch') {
             steps {
-                 sh "sh scripts/commit-release-branch.sh"
+                 sh """sh scripts/commit-release-branch.sh"""
             }
         } 
 
