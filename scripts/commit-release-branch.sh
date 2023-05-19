@@ -18,19 +18,19 @@ echo "DEBUG - MAJOR_VERSION: $MAJOR_VERSION"
 echo "DEBUG - MINOR_VERSION: $MINOR_VERSION"
 echo "DEBUG - PATCH_VERSION: $PATCH_VERSION"
 echo "DEBUG - MAVEN_QUALIFIER: $MAVEN_QUALIFIER"
-echo "VERSION_WITHOUT_BUILD_NUMBER: ${env.VERSION_WITHOUT_BUILD_NUMBER}"
-echo "VERSION_BUILD_NUMBER: ${env.VERSION_BUILD_NUMBER}"
+echo "VERSION_WITHOUT_BUILD_NUMBER: ${VERSION_WITHOUT_BUILD_NUMBER}"
+echo "VERSION_BUILD_NUMBER: ${VERSION_BUILD_NUMBER}"
 
 echo "------------------------------------------------------------"
 echo "DEBUG - Commit to Release Branch"
 echo "------------------------------------------------------------"
 
-if [ ${JOB_NAME} -eq 'bugfix-release' ]
+if [[ ${JOB_NAME} -eq 'bugfix-release' ]]
 then
-    git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};
+    git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER};
    # git add pom.xml;
    # git commit -m "Bugfix release RC-${env.VERSION_BUILD_NUMBER}";
-    git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};  
+    git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER};  
 else
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION;
     git add pom.xml;
