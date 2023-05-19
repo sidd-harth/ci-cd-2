@@ -26,18 +26,14 @@ pipeline {
        
     stages {
 stage('ddddddddd') {
-
 	            steps {
-
 	      		// Create an Approval Button with a timeout of 15minutes.
 	                timeout(time: 15, unit: "MINUTES") {
 	                    input message: 'Do you want to approve the deployment?', ok: 'Yes'
 	                }
-			
-	                echo "Initiating deployment"
 
+                echo "Initiating deployment"
 	            }
-
 	        }
         stage('Checkout Release') {
             steps {
@@ -53,18 +49,13 @@ stage('ddddddddd') {
             }
         }
         stage('Deployment') {
-
 	            steps {
-
 	      		// Create an Approval Button with a timeout of 15minutes.
 	                timeout(time: 15, unit: "MINUTES") {
 	                    input message: 'Do you want to approve the deployment?', ok: 'Yes'
 	                }
-			
-	                echo "Initiating deployment"
-
+                echo "Initiating deployment"
 	            }
-
 	        }
         stage('Echo Version') {
             when {
@@ -82,6 +73,8 @@ stage('ddddddddd') {
 
         stage('Update Build Number & Set Maven Version') {
             steps {
+	         sh "git checkout bugfix/1.1"
+                 sh 'git pull'
                  sh '''sh scripts/bugfix-update-build-number-and-set-maven-version.sh'''
             }
         }
