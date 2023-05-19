@@ -79,9 +79,8 @@ pipeline {
                 sh 'echo Smoke Testing Success'
             }
         } 
-<<<<<<< HEAD
 
-        stage('Approval for Git Tag') {
+        stage('Create Git Tag') {
 	            steps {	      		
 	                timeout(time: 15, unit: "DAYS") {
 	                    input message: 'Testing is Success. Do you want to create a gi tag for this release?', ok: 'Yes'
@@ -96,8 +95,6 @@ pipeline {
                 sh "git push origin --tags"
             }
         }
-=======
->>>>>>> develop
 /*         stage('Check Maven Version') {
             steps {
                 sh "sh scripts/check-maven-version-snapshot.sh"
