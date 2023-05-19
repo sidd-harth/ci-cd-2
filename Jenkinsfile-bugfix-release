@@ -13,6 +13,7 @@ pipeline {
         POM_MAVEN_QUALIFIER = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout | cut -d- -f2", returnStdout: true).trim() 
         VERSION_WITHOUT_BUILD_NUMBER = sh(script: "echo ${env.POM_MAJOR_VERSION}.${env.POM_MINOR_VERSION}.${env.POM_PATCH_VERSION}-${env.POM_MAVEN_QUALIFIER}", returnStdout: true).trim()
         VERSION_BUILD_NUMBER = sh(script: "mvn help:evaluate -Dexpression='project.version' -q -DforceStdout | cut -d- -f3", returnStdout: true).trim()
+        POM_SCM_URL         = sh(script: "mvn help:evaluate -Dexpression='project.scm.url' -q -DforceStdout", returnStdout: true).trim()
     }
 
     parameters {
@@ -24,7 +25,20 @@ pipeline {
     }    
        
     stages {
+stage('Deployment') {
 
+	            steps {
+
+	      		// Create an Approval Button with a timeout of 15minutes.
+	                timeout(time: 15, unit: "MINUTES") {
+	                    input message: 'Do you want to approve the deployment?', ok: 'Yes'
+	                }
+			
+	                echo "Initiating deployment"
+
+	            }
+
+	        }
         stage('Checkout Release') {
             steps {
                 script {
@@ -38,7 +52,20 @@ pipeline {
                 echo "Checkout Release completed: ${currentBuild.currentResult}"
             }
         }
-        
+        stage('Deployment') {
+
+	            steps {
+
+	      		// Create an Approval Button with a timeout of 15minutes.
+	                timeout(time: 15, unit: "MINUTES") {
+	                    input message: 'Do you want to approve the deployment?', ok: 'Yes'
+	                }
+			
+	                echo "Initiating deployment"
+
+	            }
+
+	        }
         stage('Echo Version') {
             when {
                 expression { params.RELEASE_VERSION.contains("bugfix") }
