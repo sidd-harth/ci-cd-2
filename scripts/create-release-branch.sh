@@ -25,12 +25,12 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Create Release Branch"
 echo "------------------------------------------------------------"
 
-if [[ $JOB_NAME -eq 'bugfix-release' ]]
+if [[ '$JOB_NAME' -eq 'bugfix-release' ]]
 then
     git add pom.xml   
     git commit -m "Bugfix release for $POM_VERSION"
     git checkout -b release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER} bugfix/$MAJOR_VERSION.$MINOR_VERSION;
-elif [[$JOB_NAME -eq 'prepare-hotfix' ]]
+elif [[ '$JOB_NAME' -eq 'prepare-hotfix' ]]
 then
     git checkout -b hotfix/$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION main;
 else
