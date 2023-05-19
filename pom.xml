@@ -4,7 +4,11 @@
 
 	<groupId>2bb670b7-914d-4c03-9cf3-74889d8836d1</groupId>
 	<artifactId>ci-cd-2</artifactId>
+<<<<<<< HEAD
+	<version>1.1.0-RC-1</version>
+=======
 	<version>1.1.1-SNAPSHOT</version>
+>>>>>>> develop
 	<packaging>mule-application</packaging>
 
 	<name>ci-cd-2</name>
