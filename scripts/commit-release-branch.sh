@@ -28,8 +28,8 @@ echo "------------------------------------------------------------"
 if [ ${JOB_NAME} -eq 'bugfix-release' ]
 then
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};
-    git add pom.xml;
-    git commit -m "Bugfix release RC-${env.VERSION_BUILD_NUMBER}";
+   # git add pom.xml;
+   # git commit -m "Bugfix release RC-${env.VERSION_BUILD_NUMBER}";
     git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION-${env.VERSION_BUILD_NUMBER};  
 else
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION;
