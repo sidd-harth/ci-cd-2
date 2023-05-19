@@ -53,12 +53,6 @@ pipeline {
             }
         }
 
-        stage('Push Artefact to Nexus') {
-            steps {
-                 sh 'echo Push Artefact to Nexus Success'
-            }
-        }   
-        
         stage('Commit to Release Branch') {
             steps {
                  sh "sh scripts/commit-release-branch.sh"

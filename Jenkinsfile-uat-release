@@ -79,7 +79,6 @@ pipeline {
                 sh 'echo Smoke Testing Success'
             }
         } 
-<<<<<<< HEAD
 
         stage('Create Git Tag') {
 	            steps {	      		
@@ -96,8 +95,6 @@ pipeline {
                 sh "git push origin --tags"
             }
         }
-=======
->>>>>>> develop
 /*         stage('Check Maven Version') {
             steps {
                 sh "sh scripts/check-maven-version-snapshot.sh"
