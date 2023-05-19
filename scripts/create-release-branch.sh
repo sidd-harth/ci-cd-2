@@ -28,8 +28,7 @@ echo "------------------------------------------------------------"
 if [[ $JOB_NAME -eq 'bugfix-release' ]]
 then
     git add pom.xml   
-    git commit -m "Bugfix release RC-${VERSION_BUILD_NUMBER}"
-    git fetch --all
+    git commit -m "Bugfix release for $POM_VERSION"
     git checkout -b release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER} bugfix/$MAJOR_VERSION.$MINOR_VERSION;
 else
     git checkout develop;
