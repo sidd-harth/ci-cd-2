@@ -47,6 +47,7 @@ pipeline {
 
         stage('Create Release Branch') {
             steps {
+                sh "git checkout ${params.RELEASE_VERSION}"
                 sh '''sh scripts/create-release-branch.sh'''
             }
         }
