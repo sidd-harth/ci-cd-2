@@ -12,4 +12,5 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		<set-payload value="hello-world-feature-123" doc:name="Set Payload" doc:id="3d1e1da0-86b5-49fd-b644-b969fa226190" />
 	</flow>
 	<!-- bugfix/1.1 -->
+	<!-- hotfix/1.1.x -->
 </mule>

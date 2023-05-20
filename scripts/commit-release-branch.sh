@@ -25,12 +25,18 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Commit to Release Branch"
 echo "------------------------------------------------------------"
 
-if [[ ${JOB_NAME} -eq 'bugfix-release' ]]
+if [[ $JOB_NAME == 'bugfix-release' ]]
 then
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER};
    # git add pom.xml;
    # git commit -m "Bugfix release RC-${env.VERSION_BUILD_NUMBER}";
     git push --set-upstream origin release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER};  
+elif [[ $JOB_NAME == 'build-hotfix' ]]
+then
+    git add pom.xml;
+    git commit -m "Hotfix Release $POM_VERSION";
+    git checkout -b hotfix/$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION;
+    git push --set-upstream origin hotfix/$MAJOR_VERSION.$MINOR_VERSION.$PATCH_VERSION; 
 else
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION;
     git add pom.xml;
