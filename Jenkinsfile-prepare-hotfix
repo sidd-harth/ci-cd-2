@@ -42,7 +42,7 @@ pipeline {
                  sh "git checkout hotfix/${env.POM_MAJOR_VERSION}.${env.POM_MINOR_VERSION}.${env.POM_MINOR_VERSION}" 
                  sh "git add pom.xml"    
                  sh 'git commit -m "Prepare hotfix"'
-                 sh "git push --set-upstream origin hotfix/${env.POM_MAJOR_VERSION}.${env.POM_MINOR_VERSION}.${env.POM_MINOR_VERSION}"  
+                 sh "git push --set-upstream origin hotfix/${env.POM_MAJOR_VERSION}.${env.POM_MINOR_VERSION}.${env.POM_PATCH_VERSION}"  
             }
         } 
 
