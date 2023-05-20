@@ -61,7 +61,7 @@ pipeline {
             }
             steps {
                 sh "git checkout ${params.RELEASE_VERSION}"
-                sh "git tag hotfix/${env.UPDATED_POM_VERSION}"
+                sh "git tag ${env.UPDATED_POM_VERSION}"
                 sh "git push origin --tags"
             }
         }        
