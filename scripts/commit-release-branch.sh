@@ -25,7 +25,7 @@ echo "------------------------------------------------------------"
 echo "DEBUG - Commit to Release Branch"
 echo "------------------------------------------------------------"
 
-if [[ ${JOB_NAME} -eq 'bugfix-release' ]]
+if [[ $JOB_NAME == 'bugfix-release' ]]
 then
     git checkout release/$MAJOR_VERSION.$MINOR_VERSION-${VERSION_BUILD_NUMBER};
    # git add pom.xml;
